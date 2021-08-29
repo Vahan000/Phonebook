@@ -72,7 +72,7 @@ public class Contact{
 
     static void removeContact(){
         Scanner fourthInput = new Scanner(System.in);
-        System.out.println("Please enter the ID of the contact you would wish to remove: ");
+        System.out.print("Please enter the ID of the contact you would wish to remove: ");
         int index = fourthInput.nextInt();
 
         contacts.remove(index);
@@ -115,6 +115,89 @@ public class Contact{
                 break;
 
         }
+    }
+
+    static void displayProgram(){
+
+        System.out.println("\n\t\t\t\t\t\t\t\t\t\t\t\t\t\t\t\t\t\t\tYou are welcome to the Phonebook Application.\n ");
+
+        try {
+            Thread.sleep(2000);
+        } catch (InterruptedException e) {
+            e.printStackTrace();
+        }
+
+        String secondResponse = " ";
+
+        do{
+
+            System.out.println("If you want to add a contact please type - add");
+            System.out.println("If you want to remove a contact please type - remove");
+            System.out.println("If you want to display a contact please type - display");
+            System.out.println("If you want to edit a contact please type - edit\n");
+
+            try {
+                Thread.sleep(4000);
+            } catch (InterruptedException e) {
+                e.printStackTrace();
+            }
+
+            System.out.print("Your wished operation: ");
+
+            Scanner input = new Scanner (System.in);
+            String response = input.nextLine();
+
+            switch(response.toLowerCase()){
+                case "edit":
+                    if(contacts.size()==0){
+                        System.out.println("Sorry but the contact list is empty. Please add a contact before editing.\n");
+                    }
+                    else{
+                        editContact();
+                        System.out.println();
+                    }
+                    break;
+                case "add":
+                    addContact();
+                    System.out.println();
+                    break;
+                case "remove":
+                    if(contacts.size()==0){
+                        System.out.println("Sorry but the contact list is empty. Please add a contact before removing.\n");
+                    }
+                    else{
+                        displayContact();
+                        System.out.println();
+                        removeContact();
+                        System.out.println();
+                    }
+                    break;
+                case "display":
+                    if(contacts.size()==0){
+                        System.out.println("Sorry but the contact list is empty. Please add a contact before displaying.\n");
+                    }
+                    else{
+                        displayContact();
+                        System.out.println();
+                    }
+                    break;
+            }
+
+            try {
+                Thread.sleep(4000);
+            } catch (InterruptedException e) {
+                e.printStackTrace();
+            }
+
+            System.out.println("Do you want to continue? Yes or No? ");
+            System.out.print("Your answer: ");
+
+            Scanner secondInput = new Scanner (System.in);
+            secondResponse = secondInput.nextLine();
+            System.out.println();
+        }while(secondResponse.equalsIgnoreCase("yes"));
+
+
     }
 
 
