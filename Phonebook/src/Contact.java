@@ -3,8 +3,8 @@ import java.util.Scanner;
 
 /**
  * Description: This class is designed for presenting the Phonebook Application. We have a simple approach for
- * characterizing our contacts. We describe them with first names, last names, and phone numbers.
- * We also have an array list where we keep our contacts.
+ *              characterizing our contacts. We describe them with first names, last names, and phone numbers.
+ *              We also have an array list where we keep our contacts.
  *
  * @author Vahan_Grigoryan
  */
@@ -18,8 +18,8 @@ public class Contact {
 
     /**
      * Description: This is the constructor of the Contact class where we initialize the fields of our class.
-     * It has private access because we do not want the user to create objects of our class directly
-     * and outside of the Contact class.
+     *              It has private access because we do not want the user to create objects of our class directly
+     *              and outside of the Contact class.
      *
      * @param phoneNumber
      * @param firstName
@@ -169,12 +169,24 @@ public class Contact {
             case "phone number":
                 Scanner fifthInput = new Scanner(System.in);
                 System.out.print("Please enter the new phone number: ");
-                int newPhoneNumber = fifthInput.nextInt();
+                long newPhoneNumber = fifthInput.nextLong();
                 getContact(index).phoneNumber = newPhoneNumber;
                 break;
 
         }
     }
+
+
+    /**
+     * Description: This is our general method which organizes the whole workflow of the program. At first its welcome
+     *              message is displayed on screen. After that the program asks which operation the user would like to do.
+     *              After which we collect the response of the user and in help of the "switch-case" we start to invoke
+     *              the corresponding operation. Finally, the program asks whether the user wants to continue the workflow
+     *              (just in case the user wants to add a new contact or do some other operations) or not. If the user
+     *              wants to continue everything starts from the beginning if not the program just ends.
+     *
+     *
+     */
 
     static void displayProgram() {
 
@@ -186,7 +198,7 @@ public class Contact {
             e.printStackTrace();
         }
 
-        String secondResponse = " ";
+        String secondResponse = "yes";
 
         do {
 
@@ -237,6 +249,10 @@ public class Contact {
                         System.out.println();
                     }
                     break;
+                default:
+                    System.out.println("\nIncorrect input. Please try again.\n");
+
+
             }
 
             try {
@@ -247,13 +263,16 @@ public class Contact {
             if (response.equalsIgnoreCase("add")) {
                 System.out.println("Your wished contact was successfully added. \n");
             }
+            if (response.equalsIgnoreCase("add") || response.equalsIgnoreCase("remove")
+                || response.equalsIgnoreCase("display") || response.equalsIgnoreCase("edit")){
 
-            System.out.println("Do you want to continue? Yes or No? ");
-            System.out.print("Your answer: ");
+                System.out.println("Do you want to continue? Yes or No? ");
+                System.out.print("Your answer: ");
 
-            Scanner secondInput = new Scanner(System.in);
-            secondResponse = secondInput.nextLine();
-            System.out.println();
+                Scanner secondInput = new Scanner(System.in);
+                secondResponse = secondInput.nextLine();
+                System.out.println();
+            }
         } while (secondResponse.equalsIgnoreCase("yes"));
 
 
