@@ -65,7 +65,7 @@ public class Contact {
 
     /**
      * Description: This is the toString method which we have inherited from the Object class and gave our own
-     *              implementation by overriding.
+     *              implementation by overriding (the main goal of this method is displaying information about the object).
      */
 
     @Override
